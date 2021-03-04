@@ -1,0 +1,70 @@
+/* Global */
+@font-face {
+ font-family:'MF Light'; font-weight:300; font-style:normal;
+ src:url(fonts/Montserrat-Light.ttf) format("truetype");
+}
+@font-face {
+ font-family:'MF Regular'; font-weight:300; font-style:normal;
+ src:url(fonts/Montserrat-Regular.ttf) format("truetype");
+}
+@font-face {
+ font-family:'MF SemiBold'; font-weight:300; font-style:normal;
+ src:url(fonts/Montserrat-SemiBold.ttf) format("truetype");
+}
+@font-face {
+ font-family:'MF ExtraBold'; font-weight:300; font-style:normal;
+ src:url(fonts/Montserrat-ExtraBold.ttf) format("truetype");
+}
+
+* {
+  float: left;
+  font-family: MF Regular;
+  font-size: 14px;
+}
+*, ::after, ::before {
+	margin: 0; padding: 0; outline:0;
+  -webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;
+  -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+}
+body {
+  min-width: 300px; width: 100vw;
+  background: #15145b; float: none; line-height: 1.42857143;
+}
+hr { opacity: 0.5; margin: 10px 0px; }
+input {
+  background-color: transparent; border-style: none;
+  -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text;
+}
+img { vertical-align: middle; }
+ul { margin: 0px; list-style: none; }
+li { list-style: none; }
+
+a { text-decoration: none; color: inherit; }
+a:hover { text-decoration: none; color: inherit; }
+a:active { text-decoration: none; outline: none;}
+a:focus { text-decoration: none; outline: none;}
+
+button:active { outline: none; border: none; }
+button:focus { outline: none; }
+
+.hidden {
+  display: none!important;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  background: #272727;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e1e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1e1e1e;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

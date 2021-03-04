@@ -1,0 +1,192 @@
+/* HOME */
+.home-wrapper {
+  width: 100%;
+  margin-top: 80px;
+  padding: 40px;
+}
+.home-grid {
+  display: grid;
+  float: left;
+  width: 100%;
+  grid-gap: 20px;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: auto;
+	grid-template-areas:
+	"home-left home-right"
+}
+
+.home-left { grid-area: home-left; }
+.home-right { grid-area: home-right; }
+
+.home-grid > div {
+  background: #212470;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 500px;
+  width: 100%;
+}
+.home-button {
+  width: 100%;
+  text-align: center;
+  font-family: MF Regular;
+  font-size: 12px;
+  color: white;
+  line-height: 40px;
+  border-radius: 5px;
+  background: #4748bd;
+  box-shadow: 0px 1px 4px 0px #060619;
+  cursor: pointer;
+}
+.home-title {
+  width: 100%;
+  margin: 15px 0 3px;
+  font-family: MF Regular;
+  font-size: 11px;
+  color: white;
+}
+
+.home-ranks {
+  width: 100%;
+}
+.home-rank {
+  width: calc(100%/3 - 10px);
+  margin: 5px;
+  border: 2px solid #4748bd;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  line-height: 30px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.home-luck {
+  margin-top: 60px;
+  width: 100%;
+}
+.home-tiles {
+  width: calc(100% - 20px);
+  height: 20px;
+  padding: 5px 0;
+}
+.home-tile {
+  height: 10px;
+  border: 2px solid #4748bd;
+  margin: 0 2px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.home-tile.filled {
+  background: #4748bd;
+}
+.home-tile.five {
+  width: calc(100%/5 - 4px);
+}
+.home-tile.ten {
+  width: calc(100%/10 - 4px);
+}
+.home-value {
+  width: 20px;
+  color: white;
+  text-align: center;
+}
+
+.home-spinner {
+  width: 100%;
+  background: #222060;
+  border-radius: 5px;
+  padding: 15px 0;
+  overflow-x: hidden;
+  position: relative;
+  height: 100px;
+}
+.home-arrow {
+  position: absolute;
+  left: 50%;
+  top: -24px;
+  transform: translateX(-50%);
+}
+.home-arrow i {
+  font-size: 60px;
+  color: #4748bd;
+}
+.home-time {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  line-height: 35px;
+  border-radius: 5px;
+  background: #4748bd;
+  color: white;
+  font-size: 15px;
+  padding: 0 10px;
+}
+.home-time i {
+  float: none;
+  margin-right: 3px;
+}
+.home-winner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 35px;
+  border-radius: 5px;
+  background: #4748bd;
+  color: white;
+  font-size: 13px;
+  padding: 0 20px;
+}
+.home-avatars {
+  position: absolute;
+  top: 10px;
+  left: -50px;
+  width: 1200px;
+}
+.home-avatar {
+  height: 80px;
+  width: 80px;
+  margin: 0 2px;
+}
+.home-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.home-reactions {
+  width: 100%;
+  margin-top: 40px;
+  padding: 0 10px;
+}
+.home-reaction {
+  width: 100%;
+  padding: 3px 0;
+  line-height: 15px;
+  font-size: 14px;
+  font-family: MF Regular;
+  color: white;
+}
+.home-reaction span {
+  float: none;
+  font-family: MF SemiBold;
+}
+.home- {
+
+}
+.home- {
+
+}
+.home- {
+
+}
+.home- {
+
+}
+.home- {
+
+}
+
+@media screen and (max-width: 380px) {
+}

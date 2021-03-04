@@ -1,0 +1,10 @@
+Step 1: Install python
+	a. Download python 3 from this link: https://www.python.org/ftp/python/3.7.0/python-3.7.0.exe
+	b. Check if it's correctly installed by opening the command prompt or powershell (windows 10 only) and writing 'python -V'
+
+Step 2: Install packages
+	a. On the command prompt, run 'pip install beautifulsoup4'
+	b. Still on the prompt, run 'pip install requests'
+
+Step 3: Run
+	a. Either double click the chiro.py file or open the command prompt and run 'python chiro.py'

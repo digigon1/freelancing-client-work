@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matrix Test</title>
+	<script type="text/javascript" src="browser-matrix.js"></script>
+</head>
+<body>
+
+	Sanity Testing (check the console) : This example is here to make sure that
+    the SDK works inside a browser. It simply does a GET /publicRooms on
+    matrix.org
+    <br/>
+    You should see a message confirming that the SDK works below:
+    <br/>
+    <div id="result"></div>
+	
+	<script type="text/javascript">
+		console.log("Loading browser sdk");
+
+		var client = matrixcs.createClient("http://matrix.org");
+
+		//client.startClient();
+		
+		client.registerGuest({}, function(err, data) {
+			if (err) {
+			   console.error("err %s", JSON.stringify(err));
+		       return;
+		    }
+		    console.log("data %s [...]", JSON.stringify(data).substring(0, 500));
+		    
+		    token = data.access_token;
+
+		    var authedClient = matrixcs.createClient({
+		    	baseUrl: "http://matrix.org",
+		    	accessToken: data.access_token,
+		    	userId: data.user_id
+		    })
+
+		    authedClient.publicRooms(function (err, data) {
+			    if (err) {
+				   console.error("err %s", JSON.stringify(err));
+			       return;
+			    }
+			    console.log(data);
+			    //console.log("data %s [...]", JSON.stringify(data).substring(0, 1000));
+			    //console.log("Congratulations! The SDK is working on the browser!");
+
+			    authedClient.joinRoom(data.chunk[14].room_id, {}, function (err, data) {
+			    	if (err) {
+					   console.error("err %s", JSON.stringify(err));
+				       return;
+				    }
+				    console.log(data);
+				    //console.log("roomState data %s [...]", JSON.stringify(data).substring(0, 1000));
+			    })
+
+			    var result = document.getElementById("result");
+			    result.innerHTML = "<p>The SDK appears to be working correctly.</p>";
+			});
+		})
+	</script>
+</body>
+</html>

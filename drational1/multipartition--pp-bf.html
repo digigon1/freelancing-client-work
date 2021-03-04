@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Multi-partition</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
+</head>
+<body>
+
+<div id="app">
+	<section class="section">
+		<div class="container">
+			<div class="columns is-multiline">
+				<!--
+				<number-input v-for="values in input" :values="values"></number-input>
+				-->
+
+				<textarea id="input_values" rows="40"></textarea>
+
+				<!--
+				<div class="column is-3-desktop is-12" :style="{ position:'relative', minHeight: '100px' }">
+					<button
+					@click="addRow()"
+					class="button is-primary"
+					:style="{ position:'absolute', top:'.75rem', right:'.75rem', bottom:'.75rem', left:'.75rem', width: 'calc(100% - .75rem)', height: 'auto' }">
+						<span class="icon is-medium">
+							<svg
+							width="1792"
+							height="1792"
+							viewBox="0 0 1792 1792"
+							xmlns="http://www.w3.org/2000/svg">
+								<path
+								d="M1600 736v192q0 40-28 68t-68 28h-416v416q0 40-28 68t-68 28h-192q-40 0-68-28t-28-68v-416h-416q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h416v-416q0-40 28-68t68-28h192q40 0 68 28t28 68v416h416q40 0 68 28t28 68z"
+								fill="white"/>
+							</svg>
+						</span>
+					</button>
+				</div>
+				-->
+			</div>
+
+			<hr>
+
+			<div class="columns">
+				<div class="column is-4-desktop is-12">
+					<div class="field">
+						<label class="label">Number of sets</label>
+						<p class="control">
+							<input type="number" class="input" v-model="setCount">
+						</p>
+					</div>
+				</div>
+				<div class="column is-4-desktop is-12">
+					<div class="field">
+						<label class="label">Precision</label>
+						<p class="control">
+							<input type="number" class="input" v-model="precision">
+						</p>
+					</div>
+				</div>
+				<div class="column is-4-desktop is-12" :style="{ position:'relative', minHeight: '100px' }">
+					<button
+					@click="calculate()"
+					class="button is-primary"
+					:style="{ position:'absolute', top:'.75rem', right:'.75rem', bottom:'.75rem', left:'.75rem', width: 'calc(100% - .75rem)', height: 'auto' }">
+						Calculate
+					</button>
+				</div>
+			</div>
+
+			<template v-if="result">
+				<hr>
+				<div class="columns is-multiline">
+					<result-set v-for="(set, index) in result" :set="set" :index="index"></result-set>
+				</div>
+			</template>
+		</div>
+	</section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js" charset="utf-8"></script>
+<script src="https://unpkg.com/vue@2.2.6/dist/vue.min.js" charset="utf-8"></script>
+
+<script type="text/x-template" id="number-input">
+	<div class="column is-3-desktop is-12">
+		<div class="box">
+			<div class="field">
+				<label class="label">Frequency</label>
+				<p class="control">
+					<input type="number" class="input" v-model="values.f">
+				</p>
+			</div>
+			<div class="field">
+				<label class="label">Numbers</label>
+				<p class="control">
+					<textarea class="textarea" v-model="values.numbers"></textarea>
+				</p>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-template" id="result-set">
+	<div class="column is-4-desktop is-12">
+		<h2 class="title">Set {{ index+1 }}, Count {{ _.flatten(_.map(results, function(o){return o.numbers.split(' ')})).length }}, Sum {{ Math.round(10 * _.flatten(_.map(results, function(o){return o.numbers.split(' ')})).reduce( function (a, b) { return parseFloat(a) + parseFloat(b) }, 0 ))/10 }}, Average {{ Math.round(100 * _.flatten(_.map(results, function(o){return o.numbers.split(' ')})).reduce( function (a, b) { return parseFloat(a) + parseFloat(b) }, 0 )/_.flatten(_.map(results, function(o){return o.numbers.split(' ')})).length)/100 }}</h2>
+		<div class="field">
+			<label class="label">Sum</label>
+			<p class="control">
+				<input type="number" class="input" v-model="sum" disabled>
+			</p>
+		</div>
+
+		<div class="field">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Frequency</th>
+						<th>Numbers</th>
+						<th>Subtotal</th>
+						<th>Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="result in results">
+						<td>{{ result.f }}</td>
+						<td>{{ result.numbers }}</td>
+						<td>{{ result.subtotal }}</td>
+						<td v-if="result.f == 1">{{ result.numbers.split(' ').length }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" src="pp-bf.js"></script>
+</body>
+</html>

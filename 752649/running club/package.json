@@ -1,0 +1,11 @@
+{
+  "name": "running-club",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js"
+  }, 
+  "dependencies": {
+    "cheerio": "latest",
+    "@types/cheerio": "latest"
+  }
+}
